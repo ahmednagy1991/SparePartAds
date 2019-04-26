@@ -3,6 +3,7 @@
     "db_password": "db_password",
     "jwt_private_key": "jwt_private_key",
     "smtp_username": "smtp_username",
-    "smtp_password": "smtp_password"
+    "smtp_password": "smtp_password",
+    "db_host": "mongodb+srv://ahmednagy:Ahmed1991@cluster0-5p48n.mongodb.net/test"
     
 }

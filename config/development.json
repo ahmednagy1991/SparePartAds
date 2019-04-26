@@ -1,4 +1,7 @@
 {
-    "application_name":"SpareParts",
-    "db_host":"mongodb://localhost:27017/spare_parts"   
+    "application_name":"SpareParts"
+    
+   
+   
+    
 }

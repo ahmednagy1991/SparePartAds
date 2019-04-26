@@ -8,7 +8,7 @@ const auth = require('./routes/auth');
 
 const db = require('mongoose');
 const config = require('config');
-
+//://cloud.mongodb.com
 db.connect(config.get("db_host")).then(() => console.log("connected to databse successfuly"))
     .catch(err => console.log("ther is an error while connecting to the databse", err));
     
