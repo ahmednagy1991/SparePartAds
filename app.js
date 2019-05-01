@@ -20,12 +20,12 @@ const config = require('config');
 if (config.get("node_envi") == "production")
 {
     db.connect(config.get("db_host"), { useNewUrlParser: true, useCreateIndex: true }).then(() => console.log("connected to databse successfuly"))
-        .catch(err => console.log("ther is an error while connecting to the databse", err));
+        .catch(err => console.log("There is an error while connecting to the databse", err));
 }
 else
 {
     db.connect(config.db, { useNewUrlParser: true, useCreateIndex: true }).then(() => console.log("connected to databse successfuly"))
-        .catch(err => console.log("ther is an error while connecting to the databse", err));
+        .catch(err => console.log("There is an error while connecting to the databse", err));
 }
 
 
