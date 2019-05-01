@@ -38,7 +38,7 @@ app.use('/api/user', user);
 app.use('/api/auth', auth);
 console.log(config.application_url);
 
- 
+  
 
 const port=process.env.PORT || 3000
 app.listen(port,()=>{ 
