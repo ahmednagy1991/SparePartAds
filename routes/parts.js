@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const auth=require("../middleware/auth");
 const part = require('../models/parts');
+const part_schema = require('../requestSchemas/part');
 var bodyParser = require('body-parser');
 router.use(bodyParser.json());
 
@@ -12,13 +14,15 @@ router.get('/', (req, res) => {
     });   
 });
 
-router.post('/', async (req, res) => {
-    const error = part.validate(req.body);   
-    if (error.error) return res.status(400).send(error.error.details[0].message);   
+router.post('/', auth, async (req, res) => {
+    const error = part_schema.validate(req.body);   
+    if (error.error) return res.status(400).send(error.error.details[0].message); 
+    console.log("user_id: " + req.user._id);
+    req.body.user= req.user._id; 
     part.create(req.body).then((result) => {       
         return res.send(result);
     }).catch((err) => {     
-        return res.status(400);
+        return res.status(400).send(err);
     });
 });
 
