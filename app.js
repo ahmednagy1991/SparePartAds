@@ -40,7 +40,7 @@ console.log(config.application_url);
 
   
 
-const port=process.env.PORT || 3000
+const port = config.get("PORT") || 3000
 app.listen(port,()=>{ 
     console.log(`working on port ${port}`);
 });
