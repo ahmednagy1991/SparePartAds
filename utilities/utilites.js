@@ -4,9 +4,24 @@ const config = require('config');
 var nodemailer = require('nodemailer');
 
 
-exports.hash_password = async function (password) {
-    const salt = await crypt.genSalt(10);
-    return await crypt.hash(password, salt);
+exports.hash_password = function (password) {
+
+    return new Promise(function (resolve, reject) {
+
+        crypt.genSalt(10, function (error, salt) {
+            crypt.hash(password, salt, null, function (err, hash) {
+                if (err) {
+                     return reject(err);
+                }
+                else {
+                   return resolve(hash);
+                }
+            });
+        });
+
+    });
+   
+
 }
 
 
@@ -32,7 +47,7 @@ exports.generateToken = async function (obj) {
 
 
 exports.sendEmail = async function (reciver, subject, html_template) {
-      
+
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -50,7 +65,7 @@ exports.sendEmail = async function (reciver, subject, html_template) {
 
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
-            console.log(error);
+            return error;
         } else {
             console.log('Email sent: ' + info.response);
         }

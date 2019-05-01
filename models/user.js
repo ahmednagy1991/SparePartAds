@@ -1,5 +1,4 @@
 const db = require('mongoose');
-const Joi = require('joi');
 const uuidv1 = require('uuid/v1');
 
 
@@ -35,23 +34,10 @@ const User = db.model('User', db.Schema({
     created_at: { type: String, default: Date.now() }
 }));
 
-exports.validate = function (usr) {
-    const schema = {
-        username: Joi.string().required().min(5),
-        password: Joi.string().required().min(5),
-        email: Joi.string().required().email(),
-        phone: Joi.string().required(),
-        address: Joi.string().required().min(5),
-        latitude: Joi.string(),
-        longitude: Joi.string(),
-    };
-    return Joi.validate(usr, schema);
-}
-
 
 
 module.exports.Register = function (newuser) {
-    return new Promise(function (resolve, reject) {
+    return new Promise(function (resolve, reject) {       
         User.findOne({ email: newuser.email }).then((usr) => {
             if (usr) return reject("User already exisits");
             let new_user = new User(newuser);
