@@ -6,6 +6,6 @@
     "smtp_password": "smtp_password",
     "db_host": "db_host",
     "node_envi":"node_envi",
-    "PORT": "PORT"
+    "NODE_PORT": "NODE_PORT"
     
 }

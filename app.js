@@ -40,7 +40,7 @@ console.log(config.application_url);
 
   
 
-const port = config.get("PORT") || 3000
+const port = config.get("NODE_PORT");
 app.listen(port,()=>{ 
     console.log(`working on port ${port}`);
 });
