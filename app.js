@@ -17,7 +17,7 @@ app.use('/api/category', categories);
 app.use('/api/manufature', manufature);
 app.use('/api/user', user);
 app.use('/api/auth', auth);
-
+console.log(config.application_url);
 
 
 

@@ -1,5 +1,6 @@
 {
-    "application_name": "SpareParts"
+    "application_name": "SpareParts",
+    "application_url": "http://localhost:3000"
   
   
 }
