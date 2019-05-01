@@ -8,6 +8,7 @@ const auth = require('./routes/auth');
 
 const db = require('mongoose');
 const config = require('config');
+const test = require('./routes/test');
 //://cloud.mongodb.com
 
 
@@ -36,6 +37,7 @@ app.use('/api/category', categories);
 app.use('/api/manufature', manufature);
 app.use('/api/user', user);
 app.use('/api/auth', auth);
+app.use('/api/test', test);
 console.log(config.application_url);
 
   
