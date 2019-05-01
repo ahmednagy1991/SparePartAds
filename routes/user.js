@@ -15,7 +15,7 @@ router.post('/register', (req, res) => {
     helper.hash_password(req.body.password).then((result) => {
         req.body.password = result;
         user.Register(req.body).then((new_usr) => {
-            //helper.sendEmail(req.body.email, "spare parts activatoin link", regTemplate.getTemplate({ "activation_token": new_usr.activation_token }));
+            helper.sendEmail(req.body.email, "spare parts egypt activatoin link", regTemplate.getTemplate({ "activation_token": new_usr.activation_token }));
             return res.send(_.pick(new_usr, ["username", "email"]));
         }).catch((err) => {
             return res.status(500).send(err);
