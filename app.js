@@ -42,7 +42,7 @@ console.log(config.application_url);
 
   
 
-const port = config.get("NODE_PORT");
-app.listen(port,()=>{ 
+// const port = config.get("NODE_PORT");
+app.listen(process.env.PORT,()=>{ 
     console.log(`working on port ${port}`);
 });
