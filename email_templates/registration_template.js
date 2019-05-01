@@ -1,4 +1,5 @@
 var emailTemplateBuilder = require("email-template-builder");
+const config = require("config");
 
 module.exports.getTemplate = function (obj)
 {
@@ -13,7 +14,7 @@ module.exports.getTemplate = function (obj)
                 children: [
                     {
                         type: "text",
-                        value: "To activate your account  <a href='http://localhost:3000/api/user/activate?activation_token={{activation_token}}'>Click here</a> "
+                        value: `To activate your account  <a href=${config.get("app_url")}'/api/user/activate?activation_token={{activation_token}}'>Click here</a> `
                     }
                 ]
             }
