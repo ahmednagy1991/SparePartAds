@@ -1,4 +1,4 @@
-const crypt = require('bcrypt');
+const crypt = require('bcrypt-nodejs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 var nodemailer = require('nodemailer');
