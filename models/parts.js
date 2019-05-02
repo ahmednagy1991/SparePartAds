@@ -4,8 +4,7 @@ const Part = db.model('Part', db.Schema({
     part_name: {
         type: String,
         required: true
-    }
-    ,
+    } ,
     category: {
         type: db.Schema.Types.ObjectId,
         ref:'Category',
