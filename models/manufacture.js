@@ -1,9 +1,12 @@
 const db = require('mongoose');
-const Joi = require('joi');
+
 
 
 const Manufacture = db.model('Manufacture', db.Schema({
-    manufacture_name: String,
+    manufacture_name: {
+        type: String,
+        required: true
+    },
     created_at: { type: String, default: Date.now() }
 }));
 
@@ -31,13 +34,6 @@ module.exports.getAll = function () {
     });
 }
 
-
-exports.validate = function (man) {
-    const schema = {
-        manufacture_name: Joi.string().required().min(5)
-    };
-    return Joi.validate(man, schema);
-}
 
 
 

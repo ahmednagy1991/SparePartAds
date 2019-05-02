@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const manufature = require('../models/manufacture');
+const manufature_schema = require('../requestSchemas/manufacture');
 var bodyParser = require('body-parser');
 router.use(bodyParser.json());
 
@@ -13,7 +14,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    const error = manufature.validate(req.body);
+    const error = manufature_schema.validate(req.body);
     if (error.error) return res.status(400).send(error.error.details[0].message);
     manufature.create(req.body).then((result) => {
         return res.send(result);
@@ -21,16 +22,5 @@ router.post('/', async (req, res) => {
         return res.status(400);
     });
 });
-
-// router.get('/:id', (req, res) => {
-//     res.send("hello spare parts");
-// });
-
-// router.put('/:id', (req, res) => {
-//     res.send("hello spare parts");
-// });
-// router.delete('/:id', (req, res) => {
-//     res.send("hello spare parts");
-// });
 
 module.exports = router;

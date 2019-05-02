@@ -77,10 +77,58 @@ module.exports.create = function (newpart) {
 }
 
 
-module.exports.getAll = function () {
+module.exports.getAllApprved = function () {
+    return new Promise(function (resolve, reject) {
+        Part.find({is_approved:true}).then((result) => {
+            resolve(result);
+        });
+    });
+}
+
+
+module.exports.getAllNotApproved = function () {
+    return new Promise(function (resolve, reject) {
+        Part.find({ is_approved: false }).then((result) => {
+            resolve(result);
+        });
+    });
+}
+
+module.exports.getAllNE = function () {
     return new Promise(function (resolve, reject) {
         Part.find().then((result) => {
             resolve(result);
+        });
+    });
+}
+
+
+
+module.exports.getById = function (partId) {
+    return new Promise(function (resolve, reject) {
+        Part.findOne({ _id: partId}).then((result) => {
+            resolve(result);
+        });
+    });
+}
+
+
+module.exports.getUserParts = function (userID) {
+    return new Promise(function (resolve, reject) {
+        Part.find({ user: userID }).then((result) => {
+            resolve(result);
+        });
+    });
+}
+
+module.exports.softDeletePart = function (partID) {
+    return new Promise(function (resolve, reject) {
+        Part.find({ _id: partID }).then((result) => {
+            result.is_approved=false;
+            Part.update({ _id: partID }, result).then((subRes)=>{
+                resolve(subRes);
+            });
+           
         });
     });
 }

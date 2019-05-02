@@ -1,8 +1,9 @@
 const db = require('mongoose');
 
 
-const Category = db.model('Category', db.Schema({
-    category_name: {
+
+const CarBrand = db.model('CarBrand', db.Schema({
+    brand_name: {
         type: String,
         required: true
     },
@@ -10,11 +11,10 @@ const Category = db.model('Category', db.Schema({
 }));
 
 
-
-module.exports.create = function (newcat) {
+module.exports.create = function (newbrand) {
     return new Promise(function (resolve, reject) {
-        let cat = new Category(newcat);
-        cat = cat.save((err, obj) => {
+        let brnd = new CarBrand(newbrand);
+        brnd = brnd.save((err, obj) => {
             if (err) {
                 reject(err);
             }
@@ -28,11 +28,12 @@ module.exports.create = function (newcat) {
 
 module.exports.getAll = function () {
     return new Promise(function (resolve, reject) {
-        Category.find().then((result) => {
+        CarBrand.find().then((result) => {
             resolve(result);
         });
     });
 }
+
 
 
 
