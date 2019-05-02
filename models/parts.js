@@ -26,7 +26,20 @@ const Part = db.model('Part', db.Schema({
         ref:'Manufacture',
         required: true
     },
+    carModel: {
+        type: db.Schema.Types.ObjectId,
+        ref: 'CarModel',
+        required: true
+    },
     price: {
+        type: Number,
+        required: true
+    },
+    manufacture_year_from: {
+        type: Number,
+        required: true
+    } ,
+    manufacture_year_to: {
         type: Number,
         required: true
     },
@@ -102,8 +115,6 @@ module.exports.getAllNE = function () {
     });
 }
 
-
-
 module.exports.getById = function (partId) {
     return new Promise(function (resolve, reject) {
         Part.findOne({ _id: partId}).then((result) => {
@@ -127,8 +138,7 @@ module.exports.softDeletePart = function (partID) {
             result.is_approved=false;
             Part.update({ _id: partID }, result).then((subRes)=>{
                 resolve(subRes);
-            });
-           
+            });           
         });
     });
 }
