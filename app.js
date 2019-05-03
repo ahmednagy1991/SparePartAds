@@ -12,7 +12,7 @@ const test = require('./routes/test');
 var cors = require('cors');
 
 
-app.options('*', cors());
+
 
 // app.use(cors());
 //://cloud.mongodb.com
@@ -47,7 +47,7 @@ app.use('/api/test', test);
 console.log(config.application_url);
 
   
-
+app.options('*', cors());
 // const port = config.get("NODE_PORT");
 app.listen(process.env.PORT,()=>{  
     console.log(`working on port ${process.env.PORT}`);
