@@ -11,7 +11,10 @@ const config = require('config');
 const test = require('./routes/test');
 var cors = require('cors');
 
-app.use(cors());
+
+app.options('*', cors());
+
+// app.use(cors());
 //://cloud.mongodb.com
 
 
