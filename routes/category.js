@@ -19,7 +19,7 @@ router.post('/', anony,(req, res) => {
     category.create(req.body).then((result) => {
         return res.send(result);
     }).catch((err) => {
-        return res.status(400);
+        return res.status(400).send(err);
     });
 });
 
