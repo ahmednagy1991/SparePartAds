@@ -10,7 +10,10 @@ exports.validate = function (part) {
         status: Joi.string().required(),
         waranty: Joi.boolean().required(),
         is_approved: Joi.boolean().required(),
-        is_featured: Joi.boolean().required()
+        is_featured: Joi.boolean().required(),
+        manufacture_year_from: Joi.number().required(),
+        manufacture_year_to: Joi.number().required(),
+        carModel: Joi.string().required()
     }
     return Joi.validate(part, schema);
 }
