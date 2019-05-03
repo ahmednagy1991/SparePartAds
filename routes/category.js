@@ -1,5 +1,5 @@
 const express = require('express');
-// const auth=require('../middleware/auth');
+const anony=require('../middleware/anonyms');
 const router = express.Router();
 const category = require('../models/category');
 const category_schema = require('../requestSchemas/category');
@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
     return res.send(cats);   
 });
 
-router.post('/', async (req, res) => {
+router.post('/', anony,async (req, res) => {
     const error = category_schema.validate(req.body);
     if (error.error) return res.status(400).send(error.error.details[0].message);
     category.create(req.body).then((result) => {
