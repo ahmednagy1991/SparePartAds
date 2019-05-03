@@ -5,7 +5,7 @@ const parts = require('./routes/parts');
 const categories = require('./routes/category');
 const manufature = require('./routes/manufature');
 const auth = require('./routes/auth');
-
+const anony = require('../middleware/anonyms');
 const db = require('mongoose');
 const config = require('config');
 const test = require('./routes/test');
@@ -31,7 +31,7 @@ else
 
 
 
-    
+app.use(anony);
 app.use('/api/parts',parts);
 app.use('/api/category', categories);
 app.use('/api/manufature', manufature);
