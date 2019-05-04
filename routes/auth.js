@@ -19,8 +19,7 @@ router.post('/login', (req, res) => {
         helper.compare_password(req.body.password, result.password).then((valid) => {
             if (valid) {
                 helper.generateToken(_.pick(result, ["_id", "username", "email"])).then((token) => {
-                    //header('x-auth-token', token)
-                    return res.send(token);
+                    return res.header('x-auth-token', token).send({"token":token});
                 }).catch((err) => {
                     return res.status(500).send(err);
                 });
